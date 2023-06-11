@@ -1,0 +1,34 @@
+﻿@*@{
+    var student = ViewData["students"] as List<PassTheDataFromModelMVC.Models.Student>;
+}*@
+
+@model IEnumerable<PassTheDataFromModelMVC.Models.Student> 
+
+   
+
+<a class="btn btn-primary" asp-controller="StudentDetails" asp-action="CreateStudentDetails">Add Detials of Students</a>
+
+<table class="table">
+    <tr> 
+        <th>Name</th>
+        <th>Semester</th>
+        <th>Branch</th>
+        <th>Edit Button</th>
+        <th>Delete Button</th>
+    </tr>
+    @foreach(var stud in Model)
+    {
+        <tr>
+            <td>@stud.Name </td>
+            <td>@stud.Semester</td>
+            <td>@stud.Branch</td>
+
+            <td><a class="btn btn-primary" asp-controller="StudentDetails" asp-action="editStudent" asp-route-id="@stud.StudId">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="StudentDetails" asp-action="Delete" asp-route-id="@stud.StudId">Delete</a></td>
+
+        </tr>
+    }
+    
+
+</table>
+
